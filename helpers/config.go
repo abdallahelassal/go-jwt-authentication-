@@ -3,8 +3,8 @@ package helpers
 import (
 	"log"
 	"os"
-	// "strconv"
 	"github.com/joho/godotenv"
+	
 )
 
 var AppConfig struct{
@@ -27,11 +27,9 @@ func LoadConfig(filename string){
 	if port == "" {
 		port = "8000"
 	}
-	// db_port , err := strconv.Atoi(os.Getenv("DB_PORT"))
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
+	
 	AppConfig.PORT = port
+	AppConfig.DB_PASSWORD = os.Getenv("DB_PASSWORD")
 	AppConfig.DB_HOST = os.Getenv("DB_HOST")
 	AppConfig.DB_NAME = os.Getenv("DB_NAME")
 	AppConfig.DB_PORT = os.Getenv("DB_PORT")

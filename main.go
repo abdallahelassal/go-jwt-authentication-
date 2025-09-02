@@ -12,5 +12,6 @@ func main(){
 	helpers.LoadConfig(".env")
 	database.ConnectDatabase()
 	r := gin.Default()
-	r.Run(":", helpers.AppConfig.PORT)
+	
+	r.Run(":"+ helpers.AppConfig.PORT)
 }

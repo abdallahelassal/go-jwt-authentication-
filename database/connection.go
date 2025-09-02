@@ -20,10 +20,11 @@ func ConnectDatabase() {
 		helpers.AppConfig.DB_PORT)
 
     fmt.Println("DSN:", dsn)
-	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		panic("Failed to connect to database!")
 	}
-	DB = database
-	database.AutoMigrate(&models.User{})
+	
+	DB = db
+	DB.AutoMigrate(&models.User{})
 }
